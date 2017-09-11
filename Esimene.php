@@ -21,7 +21,15 @@
 
 <img src="https://m.popkey.co/08e691/pJedy.gif" alt="Stan" style="width:450px;height:450px;">
 
-<img src="https://media.giphy.com/media/CY91MScPevNfi/source.gif" alt="Stan" style="width:650px;height:450px;">
+<img src="https://media.giphy.com/media/CY91MScPevNfi/source.gif" alt="Till" style="width:350px;height:150px;">
 
+	<?php  
+		echo "<p>Batman is pretty great</p>" ;
+		echo "<p> Täna on ";
+		echo date ("d/m/Y") ;
+		echo ".</p>" ;
+		echo "<p>Lehe avamise hetkel oli kell:" .date ("H:i:s") .".</p>" ;
+		
+	?>
 </body>
 </html>
