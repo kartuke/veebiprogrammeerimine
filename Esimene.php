@@ -4,13 +4,21 @@
 	$myFamilyName = "Nigols" ;
 	
 	$hourNow = date ("H");
-	//echo $hourNow;
-	// Võrdlen kellaaega ja annan hinnangu, mis päeva osaga on tegemist 
+		//echo $hourNow;
+	$schoolDayStart = date("d.m.Y.") ." 8.15" ;
+		//echo $schoolDayStart;
+	$schoolBegin = strtotime ($schoolDayStart);
+		//echo $schoolBegin;
+	$timeNow = strtotime ("now");
+		//echo ($timeNow - $schoolBegin);
+	$minutesPassed = round(($timeNow - $schoolBegin)/60);
+	echo $minutesPassed;
+		// Võrdlen kellaaega ja annan hinnangu, mis päeva osaga on tegemist 
 	$partOfDay = "";
 	if ( $hourNow < 8){
 		$partOfDay = "varajane hommik";
 	}
-	//Echo $partOfDay	
+		//Echo $partOfDay	
 	if ( $hourNow >= 8 and $hourNow < 16) {
 		$partOfDay = "koolipäev" ;
 	}
