@@ -1,3 +1,23 @@
+<?php 
+	//muutujad 
+	$myName = "Kärt" ;
+	$myFamilyName = "Nigols" ;
+	
+	$hourNow = date ("H");
+	//echo $hourNow;
+	// Võrdlen kellaaega ja annan hinnangu, mis päeva osaga on tegemist 
+	$partOfDay = "";
+	if ( $hourNow < 8){
+		$partOfDay = "varajane hommik";
+	}
+	//Echo $partOfDay	
+	if ( $hourNow >= 8 and $hourNow < 16) {
+		$partOfDay = "koolipäev" ;
+	}
+	if ( $hourNow >= 16 ) {
+		$partOfDay = "vaba aeg";
+	}
+?>
 <!DOCTYPE html>
 
 <html>
@@ -12,7 +32,11 @@
 
 </head>
 <body>
-  <h1>Kärt Nigols</h1>
+  <h1>
+  <?php
+	echo $myName ." " .$myFamilyName ;
+	?>
+	</h1>
 
   <big><p><i><b>See veebileht on loodud Õppetöö raames ning ei sisalda tõsiseltvõetavat sisu.</p></i></b></big>
   <body bgcolor="#0B3B39">
@@ -26,10 +50,9 @@
 	<?php  
 		echo "<p>Batman is pretty great</p>" ;
 		echo "<p> Täna on ";
-		echo date ("d/m/Y") ;
+		echo date ("d/m/Y") .", Käes on " .$partOfDay;
 		echo ".</p>" ;
 		echo "<p>Lehe avamise hetkel oli kell:" .date ("H:i:s") .".</p>" ;
-		
 	?>
 </body>
 </html>
