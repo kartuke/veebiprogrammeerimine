@@ -12,7 +12,8 @@
 	$timeNow = strtotime ("now");
 		//echo ($timeNow - $schoolBegin);
 	$minutesPassed = round(($timeNow - $schoolBegin)/60);
-	echo $minutesPassed;
+		//echo $minutesPassed;
+		
 		// Võrdlen kellaaega ja annan hinnangu, mis päeva osaga on tegemist 
 	$partOfDay = "";
 	if ( $hourNow < 8){
