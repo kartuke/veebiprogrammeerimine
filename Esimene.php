@@ -26,6 +26,31 @@
 	if ( $hourNow >= 16 ) {
 		$partOfDay = "vaba aeg";
 	}
+	//Vanusega seotud muutujad
+	$myAge = 0;
+	$ageNote = "";
+	$myBirthYear;
+	$yearsOfMyLife = ""; 
+	
+	//var_dump ($_POST);
+	//echo $_POST ["BirthYear"]; 
+	//arvutame vanuse
+	if (isset($_POST["BirthYear"]) and $_POST["BirthYear"]!= 0){
+		$myBirthYear = $_POST["BirthYear"];
+	$myAge = date ("Y") - $_POST["BirthYear"];
+	//echo $myAge; 
+	$ageNote= "<p> Te olete umbes " .$myAge ." aastat vana. </p>";
+	}
+	
+	$yearsOfMyLife = "<ol>
+	
+	//Lihtne tsükkel
+	/*for($i = 0; $i < 5; $i ++){
+		echo "ha";
+		
+	}*/
+	
+	
 ?>
 <!DOCTYPE html>
 
@@ -51,9 +76,6 @@
   <body bgcolor="#0B3B39">
 
 <img src="https://m.popkey.co/987552/NGLb3.gif" alt="Banana" style="width:450px;height:450px;">
-
-<img src="https://m.popkey.co/08e691/pJedy.gif" alt="Stan" style="width:450px;height:450px;">
-
 <img src="https://media.giphy.com/media/CY91MScPevNfi/source.gif" alt="Till" style="width:350px;height:150px;">
 
 	<?php  
@@ -62,6 +84,18 @@
 		echo date ("d/m/Y") .", Käes on " .$partOfDay;
 		echo ".</p>" ;
 		echo "<p>Lehe avamise hetkel oli kell:" .date ("H:i:s") .".</p>" ;
+	?>
+	<h2> Räägime vanusest </h2>
+	<p> sisesta oma sünniaasta, arvutame vanuse! </p>
+	<form method="POST">
+		<label> Teie sünniaasta: </label>
+		<input name="BirthYear" id="BirthYear" type="number" min="1900" max="2017" value="<?php echo $myBirthYear; ?>" >
+		<input id="submitBirthYear" type="submit" value="kinnita">
+	</form>
+	<?php
+		if ($ageNote  != "") {
+			echo $ageNote;
+		}
 	?>
 </body>
 </html>
