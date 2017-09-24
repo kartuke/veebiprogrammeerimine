@@ -37,19 +37,23 @@
 	//arvutame vanuse
 	if (isset($_POST["BirthYear"]) and $_POST["BirthYear"]!= 0){
 		$myBirthYear = $_POST["BirthYear"];
-	$myAge = date ("Y") - $_POST["BirthYear"];
-	//echo $myAge; 
-	$ageNote= "<p> Te olete umbes " .$myAge ." aastat vana. </p>";
+		$myAge = date ("Y") - $_POST["BirthYear"];
+		//echo $myAge; 
+		$ageNote= "<p> Te olete umbes " .$myAge ." aastat vana. </p>";
+		$yearsOfMyLife = "<ol> \n";
+		$yearNow = date ("Y");
+		for ($i = $myBirthYear; $i <= $yearNow; $i ++){	
+			$yearsOfMyLife .= "<li>" .$i  ."</li> \n" ;
+		
+		}
+		$yearsOfMyLife .= "</ol> \n";
+		//echo $yearsOfMyLife;
 	}
-	
-	$yearsOfMyLife = "<ol>
-	
 	//Lihtne tsükkel
 	/*for($i = 0; $i < 5; $i ++){
 		echo "ha";
 		
 	}*/
-	
 	
 ?>
 <!DOCTYPE html>
@@ -96,6 +100,16 @@
 		if ($ageNote  != "") {
 			echo $ageNote;
 		}
+		
+		if ( $yearsOfMyLife !="") {
+		echo "\n <h3>Olete elanud järgmistel aastatel </h3> \n" .$yearsOfMyLife;
+		}
 	?>
+		<h2> Mõned lingid </h2>
+	<p>Ma õpin <a href=https://www.tlu.ee/>Tallinna ülikoolis</a> </p>
+	<p><a href="../esimene.php"> See </a>on mu esimene lehekülg </p>
+	<p><a href="">see </a>on mu sõbra esimene lehekülg </p>
+	<p>Pildid ülikoolist <a href=Photo.php/>here</a> </p>
+	<p>Sisselogimine <a href=Login.php/>here</a> </p>
 </body>
 </html>
