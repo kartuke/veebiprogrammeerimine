@@ -106,5 +106,11 @@
 		echo "\n <h3>Olete elanud järgmistel aastatel </h3> \n" .$yearsOfMyLife;
 		}
 	?>
+		<h2> Mõned lingid </h2>
+	<p>Ma õpin <a href=https://www.tlu.ee/>Tallinna ülikoolis</a> </p>
+	<p><a href="../Esimene.php"> See </a>on mu esimene lehekülg </p>
+	<p><a href="">see </a>on mu sõbra esimene lehekülg </p>
+	<p>Pildid ülikoolist <a href=Photo.php/>here</a> </p>
+	<p>Sisselogimine <a href=Login.php/>here</a> </p>
 </body>
 </html>
