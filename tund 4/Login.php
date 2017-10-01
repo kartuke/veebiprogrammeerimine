@@ -222,6 +222,7 @@
 		<br>
 		<label>Perekonnanimi </label>
 		<input name="signupFamilyName" type="text" value="<?php echo $signupFamilyName; ?>">
+		<span><?php echo $signupFamilyNameError; ?> </span>
 		<br>
 		<label>Teie sünnikuupäev </label>
 		<?php
@@ -236,8 +237,10 @@
 		
 		<label>Kasutajanimi (E-post)</label>
 		<input name="signupEmail" type="email" value="<?php echo $signupEmail; ?>">
-		<br><br>
+		<span><?php echo $signupEmailError; ?> </span>
+		<br><br> 
 		<input name="signupPassword" placeholder="Salasõna" type="password">
+		<span><?php echo $signupPasswordError; ?> </span>
 		<br><br>
 
 		
