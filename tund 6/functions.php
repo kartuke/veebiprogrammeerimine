@@ -1,5 +1,6 @@
 <?php
 	$database = "if17_nigokart_2";
+	require("../../../config.php"); 
 	
 	//alustamse sessiooni
 	session_start();
@@ -60,6 +61,55 @@
 		$stmt->close();
 		$mysqli->close();
 	}
+	//hea mõtte salvestamise funktsioon
+	function saveIdea($idea, $color){
+		$notice = "";
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("INSERT INTO vp2userideas (userid, idea, ideacolor) VALUES(?, ?, ?)");
+		echo $mysqli->error;
+		$stmt->bind_param("iss", $_SESSION["userId"], $idea, $color);
+		if($stmt->execute()){
+			$notice = "Mõte on salvestatud!";
+		} else {
+			$notice = "Salvestamisel tekkis tõrge: " .$stmt->error;
+		}
+		
+		$stmt->close();
+		$mysqli->close();
+		return $notice;
+	}
+	
+	function readAllIdeas(){
+		$ideas = "";
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		//$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas");//absoluutselt kõigi mõtted
+		//$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas WHERE userid = ?");
+		$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas WHERE userid = ? ORDER BY id DESC");
+		$stmt->bind_param("i", $_SESSION["userId"]);
+		
+		$stmt->bind_result($idea, $color);
+		$stmt->execute();
+		while ($stmt->fetch()){
+			$ideas .= '<p style="background-color: ' .$color .'">' .$idea ."</p> \n";
+		}
+		
+		$stmt->close();
+		$mysqli->close();
+		return $ideas;
+	}
+	
+	
+	function readLastIdea(){
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+		$stmt = $mysqli->prepare("SELECT idea FROM vp2userideas WHERE id = (SELECT MAX(id) FROM vp2userideas)");
+		$stmt->bind_result($idea);
+		$stmt->execute();
+		$stmt->fetch();
+		$stmt->close();
+		$mysqli->close();
+		return $idea;
+	}
+	
 	//sisestuse kontrollimise funktsioon
 	function test_input($data){
 		$data = trim($data);//liigsed tühikud, TAB, reavahetuse jms
@@ -85,14 +135,3 @@
 	echo "Neljas summa on: " .($a + $b) ."\n";
 	*/
 ?>
-© 2017 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
