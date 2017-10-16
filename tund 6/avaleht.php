@@ -1,5 +1,7 @@
 <?php
 	require("functions.php");
+	$firstnameFromDb="";
+	$lastnameFromDb="";
 	//kui pole sisse logitud, liigume login lehele
 	if(!isset($_SESSION["userId"])){
 		header("Location: Login.php");
@@ -31,8 +33,7 @@
 ?>
 <?php 
 	//muutujad 
-	$myName = "Kärt" ;
-	$myFamilyName = "Nigols" ;
+	
 	
 	$hourNow = date ("H");
 		//echo $hourNow;
@@ -88,6 +89,7 @@
 	
 ?>
 
+
 <!DOCTYPE html>
 
 <html>
@@ -95,18 +97,15 @@
   <meta charset="utf-8">
   <font color=white>
 <title>
-  Kärt Nigols Veebiprogrameerimise asjad
-</title>
+	<?php echo $firstnameFromDb ." " .$lastnameFromDb; ?>
+		 veebiprogemise asjad
+	</title>
 
  <link rel="icon" href="https://m.popkey.co/987552/NGLb3.gif" type="GIF">
 
 </head>
 <body>
-  <h1>
-  <?php
-	echo $myName ." " .$myFamilyName ;
-	?>
-	</h1>
+  <h1><?php echo $lastnameFromDb." " .$lastnameFromDb; ?></h1>
 
   <big><p><i><b>See veebileht on loodud Õppetöö raames ning ei sisalda tõsiseltvõetavat sisu.</p></i></b></big>
   <body bgcolor="#0B3B39">

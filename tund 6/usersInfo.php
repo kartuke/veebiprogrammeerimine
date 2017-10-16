@@ -1,16 +1,19 @@
 <?php
 	require("functions.php");
+	
 	//kui pole sisse logitud, liigume login lehele
 	if(!isset($_SESSION["userId"])){
-		header("Location: login.php");
+		header("Location: Login.php");
 		exit();
 	}
 	
 	//väljalogimine
 	if(isset($_GET["logout"])){
 		session_destroy(); //lõpetab sessiooni
-		header("Location: login.php");
+		header("Location: Login.php");
 	}
+	require("usersinfotable.php");
+	
 ?>
 
 <!DOCTYPE html>
@@ -29,24 +32,16 @@
 	<p><a href="?logout=1">Logi välja</a></p>
 	<p><a href="avaleht.php">Pealeht</a></p>
 	
-	<table border="1" style="border-collapse: collapse;">
+	 <table width="1000" border='1' style='border: 3px solid black; border-collapse: collapse;>
+	 <!--<table style='width:30%';text-align:justify;>-->
 		<tr>
-			<th>Eesnimi</th>
-			<th>Perekonnanimi</th>
-			<th>kasutajanimi</th>
+			<th width="200">Eesnimi</th>
+			<th width="200">perekonnanimi</th>
+			<th width="200">e-posti aadress</th>
+			<th width="200">Sünnipäev</th>
+			<th width="200">Sugu</th>
 		</tr>
-		<tr>
-			<td>Kärt</td>
-			<td>Nigols</td>
-			<td>kartu@tlu.ee</td>
-		</tr>
-		<tr>
-			<td>Mari</td>
-			<td>Karus</td>
-			<td>kasrusmari@aed.ee</td>
-		</tr>
-	
-	</table>
-	
+<?php echo createUsersTable(); ?>
+  </table>
 </body>
 </html>

@@ -15,14 +15,16 @@
 		$stmt->bind_result($id, $emailFromDb, $passwordFromDb);
 		$stmt->execute();
 		
-		//kui vähemalt üks tulemus
+//kontrollime vastavust
 		if ($stmt->fetch()){
 			$hash = hash("sha512", $password);
-			if($hash == $passwordFromDb){
-				$notice = "Sisselogitud!";
+			if ($hash == $passwordFromDb){
+				$notice = "Logisite sisse!";
 				
-				//määran sessioonimuutujaid
+				//Määran sessiooni muutujad
 				$_SESSION["userId"] = $id;
+				$_SESSION["firstname"] = $firstnameFromDb;
+				$_SESSION["lastname"] = $lastnameFromDb;
 				$_SESSION["userEmail"] = $emailFromDb;
 				
 				//lähen pealehele
@@ -134,4 +136,6 @@
 	}
 	echo "Neljas summa on: " .($a + $b) ."\n";
 	*/
-?>
+	
+			
+	
