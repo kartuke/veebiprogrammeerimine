@@ -86,7 +86,7 @@
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 		//$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas");//absoluutselt kõigi mõtted
 		//$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas WHERE userid = ?");
-		$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas WHERE userid = ? ORDER BY id DESC");
+		$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vpuserideas WHERE userid = ? ORDER BY id DESC");
 		$stmt->bind_param("i", $_SESSION["userId"]);
 		
 		$stmt->bind_result($idea, $color);
